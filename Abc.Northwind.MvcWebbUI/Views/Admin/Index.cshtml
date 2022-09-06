@@ -1,0 +1,37 @@
+﻿
+@model Abc.Northwind.MvcWebbUI.Models.ProductListViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+<a class="btn btn-xs btn-success" href="~/admin/add"asp-action="Add">Add a new product</a>
+<div>
+    <table class="table table-striped table-dark">
+        <tr>
+            <td>Product Name</td>
+            <td> UnitPrice</td>
+            <td> UnitInStock</td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var product in Model.Products)
+        {
+    <tr>
+        <td> @product.ProductName</td>
+        <td> @product.UnitPrice </td>
+        <td>@product.UnitsInStock</td>
+        <td><input type="submit" value="Delete" class=" btn-success" asp-route-id="@product.ProductId" /></td>
+        <td><a class="btn btn-xs btn-info" asp-controller="Admin" asp-action="Update" asp-route-id="@product.ProductId">Update</a></td>
+        <td><a class="btn btn-xs btn-danger" asp-controller="Admin" asp-action="Delete" asp-route-id="@product.ProductId">Delete</a></td>
+    </tr>
+        }
+
+    </table>
+
+
+
+</div>

@@ -1,0 +1,39 @@
+﻿@model Abc.Northwind.MvcWebbUI.Models.ProductListViewModel
+@addTagHelper "*,Microsoft.AspNetCore.Mvc.TagHelpers"
+@addTagHelper "*,Abc.Northwind.MvcWebbUI"
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+<div>
+<table class="table table-striped table-dark">
+    <tr>
+        <td>
+            Product Name
+        </td>
+        <td>
+            UniitPrice
+        </td>
+        <td>
+            UnitInStock
+        </td>
+
+    </tr>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td> @product.ProductName</td>
+            <td> @product.UnitPrice </td>
+            <td>@product.UnitsInStock</td>
+        </tr>
+
+    }
+</table>
+</div>
+<product-list-pager current-category="@Model.CurrentCategory"
+                    current-page="@Model.CurrentPage"
+                    page-count="@Model.PageCount"
+                    page-size="@Model.PageSize"></product-list-pager>
